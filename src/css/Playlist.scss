@@ -4,7 +4,7 @@
 .playlist {
     @include setFlex(column);
     align-self: flex-start;
-    width: 40%;
+    width: 45%;
     max-height: 500px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,.08);
@@ -34,5 +34,14 @@
         max-height: 400px;
         overflow: auto;
         margin: 1rem 0;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    .playlist {
+        width: 100%;
+        align-self: center;
+        padding: .5rem;
+        margin-bottom: 5rem;
     }
 }

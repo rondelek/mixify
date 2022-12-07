@@ -37,3 +37,14 @@ html {
 .search {
     width: 40%;
 }
+
+@media screen and (max-width: 1060px) {
+    .create-playlist {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .search {
+        width: 100%;
+    }
+}

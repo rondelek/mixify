@@ -10,7 +10,8 @@ import SearchedArtist from "./SearchedArtist";
 export default function SearchResults(props) {
 
     return (
-    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+    <List   className="searchResults" 
+            sx={{ width: '100%', bgcolor: 'background.paper' }}>
         {props.searchResults.map((artist, index) => {
             return <SearchedArtist  key={index}
                                     onAdd={props.onAdd}

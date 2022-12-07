@@ -21,8 +21,10 @@ export default function Playlist(props) {
                                 playlistTracks={props.playlistTracks}
                                 setPlaylistTracks={props.setPlaylistTracks}
                                 onRemove={props.onRemove}/>
-            <PlaylistTracks      playlistTracks={props.playlistTracks}
+            <div className="playlist__tracks">
+                <PlaylistTracks playlistTracks={props.playlistTracks}
                                 setPlaylistTracks={props.setPlaylistTracks}/>
+            </div>
         </div>
     )
 }

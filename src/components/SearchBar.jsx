@@ -26,7 +26,6 @@ export default function SearchBar(props) {
                     onChange={handleTermChange}
                     color="secondary"
                     fullWidth/>
-            <button className="SearchButton" onClick={searchSpotify}>SEARCH</button>
         </div>
     )
 }

@@ -26,6 +26,7 @@ const theme = createTheme({
             // Name of the slot
             root: {
               // Some CSS
+              backgroundColor: 'rgb(254,254,255)',
               cursor: 'pointer',
               '&:hover': {
                 background: 'rgb(152, 83, 146, .2)',
@@ -58,9 +59,13 @@ export default function App() {
     }
 
     function searchSpotify(term) {
-        Spotify.searchSpotify(term).then(results => {
-            setSearchResults(results)
-        })
+        if (term === undefined) {
+            setSearchResults([])
+        } else {
+            Spotify.searchSpotify(term).then(results => {
+                setSearchResults(results)
+            })
+        }
     }
 
     function getTracks(artist) {

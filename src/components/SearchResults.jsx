@@ -11,7 +11,7 @@ export default function SearchResults(props) {
 
     return (
     <List   className="searchResults" 
-            sx={{ width: '100%', bgcolor: 'background.paper' }}>
+            sx={{ width: '100%' }}>
         {props.searchResults.map((artist, index) => {
             return <SearchedArtist  key={index}
                                     onAdd={props.onAdd}

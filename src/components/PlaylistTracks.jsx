@@ -5,7 +5,7 @@ import List from '@mui/material/List';
 
 export default function PlaylistTracks(props) {
     return (
-        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <List sx={{ width: '100%'}}>
             {props.playlistTracks.map((track, index) => {
                 return (
                     <PlaylistTrack   key={index}

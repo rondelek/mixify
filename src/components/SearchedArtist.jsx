@@ -11,14 +11,12 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 export default function SearchedArtist(props) {
 
     function addArtist() {
-        console.log('addArtist', props.artist.id);
         props.onAdd(props.artist)
         getTracks();
     }
 
     function getTracks() {
         props.onGetTracks(props.artist)
-        console.log('results', props.playlistTracks)
     }
 
     let avatarUrl = '';

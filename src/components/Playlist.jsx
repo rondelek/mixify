@@ -19,7 +19,7 @@ export default function Playlist(props) {
         const trackUris = props.playlistTracks.map(track => track.uri);
         console.log(trackUris, playlistName)
         Spotify.savePlaylist(playlistName, trackUris).then(() => {
-            setPlaylistName(['My playlist'])
+            setPlaylistName('My playlist')
             props.setPlaylistTracks([])
             props.setSelectedArtists([])
         })
@@ -39,6 +39,8 @@ export default function Playlist(props) {
                                 setSelectedArtists={props.setSelectedArtists}
                                 playlistTracks={props.playlistTracks}
                                 setPlaylistTracks={props.setPlaylistTracks}
+                                playlistName={playlistName}
+                                setPlaylistName={setPlaylistName}
                                 onRemove={props.onRemove}/>
             {props.playlistTracks.length === 0 &&
                 <p className="playlist__noartist">No artists selected</p>

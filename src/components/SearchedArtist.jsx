@@ -11,7 +11,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 export default function SearchedArtist(props) {
 
     function addArtist() {
-        props.onAdd(props.artist)
+        props.onAdd(props.artist);
         getTracks();
     }
 

@@ -70,7 +70,8 @@ const Spotify = {
                     artist: track.artists[0].name,
                     artist_id: track.artists[0].id,
                     uri: track.uri,
-                    cover: track.album.images[0].url
+                    cover: track.album.images[0].url,
+                    previewUrl: track.preview_url
                 }))
             })
     },

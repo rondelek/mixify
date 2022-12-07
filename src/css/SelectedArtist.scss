@@ -1,0 +1,22 @@
+.selectedArtist {
+    max-width: 150px;
+    margin: .5rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .selectedArtist {
+        max-width: 90px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .selectedArtist {
+        max-width: 80px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .selectedArtist {
+        max-width: 70px;
+    }
+}

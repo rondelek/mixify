@@ -1,0 +1,39 @@
+@import './variables';
+@import './mixins';
+
+body,
+html,
+#root {
+  height: 100%;
+}
+
+html {
+    font-size: 18px;
+}
+
+
+
+.App {
+    height: 100%;
+    color: $font-color;
+    font-family: 'Poppins', sans-serif;
+    background-color: $background;
+    padding: 1.5rem 5rem;
+
+    & h1 {
+        text-align: center;
+        font-weight: 900;
+        letter-spacing: .5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.create-playlist {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.search {
+    width: 40%;
+}

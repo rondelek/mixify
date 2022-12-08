@@ -19,7 +19,6 @@ export default function Playlist(props) {
         const trackUris = props.playlistTracks.map(track => track.uri);
         console.log(trackUris, playlistName)
         Spotify.savePlaylist(playlistName, trackUris).then(() => {
-            setPlaylistName('My playlist')
             props.setPlaylistTracks([])
             props.setSelectedArtists([])
         })
@@ -28,6 +27,7 @@ export default function Playlist(props) {
     return (
         <div className="playlist">
             <Input  className="playlist__input"
+                    name={playlistName}
                     defaultValue="My playlist"
                     onChange={handleChangePlaylistName}
                     placeholder="My playlist" 

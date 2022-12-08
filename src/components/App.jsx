@@ -7,6 +7,8 @@ import { green, blue } from '@mui/material/colors';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import krawczyk from './../assets/krawczyk.jpeg';
 import Spotify from "../util/Spotify";
+import Box from '@mui/material/Box';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 
 
@@ -41,7 +43,9 @@ export default function App() {
 
     const [searchResults, setSearchResults] = useState([]);
     const [selectedArtists, setSelectedArtists] = useState([]);
-    const [playlistTracks, setPlaylistTracks] = useState([])
+    const [playlistTracks, setPlaylistTracks] = useState([]);
+    const [open, setOpen] = useState(true);
+    
 
     function addArtist(artist) {
         setSelectedArtists(oldSelectedArtists => {
@@ -59,6 +63,7 @@ export default function App() {
     }
 
     function searchSpotify(term) {
+        setOpen(true)
         if (term === undefined) {
             setSearchResults([])
         } else {
@@ -74,23 +79,37 @@ export default function App() {
         })
     }
 
+    function handleClick() {
+        setOpen((prev) => !prev);
+    }
+
+    function handleClickAway() {
+        setOpen(false);
+    }
+  
+  
 
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
                 <h1>MIXIFY</h1>
-                {/* <button onClick={}>token</button> */}
                 <div className="create-playlist">
-                    <div className="search">
-                        <SearchBar onSearch={searchSpotify}/>
-                        <SearchResults  searchResults={searchResults}
-                                        selectedArtists={selectedArtists}
-                                        setSelectedArtists={setSelectedArtists}
-                                        playlistTracks={playlistTracks}
-                                        setPlaylistTracks={setPlaylistTracks}
-                                        onGetTracks={getTracks}
-                                        onAdd={addArtist}/>
-                    </div>
+                    <Box className="search">
+                        <ClickAwayListener onClickAway={handleClickAway}>
+                            <Box>
+                                <SearchBar onSearch={searchSpotify} onClick={handleClick}/>
+                                {open &&
+                                    <SearchResults  searchResults={searchResults}
+                                                    selectedArtists={selectedArtists}
+                                                    setSelectedArtists={setSelectedArtists}
+                                                    playlistTracks={playlistTracks}
+                                                    setPlaylistTracks={setPlaylistTracks}
+                                                    onGetTracks={getTracks}
+                                                    onAdd={addArtist}/>
+                                }
+                            </Box>
+                        </ClickAwayListener>
+                    </Box>
                     <Playlist   selectedArtists={selectedArtists}
                                 setSelectedArtists={setSelectedArtists}
                                 playlistTracks={playlistTracks}

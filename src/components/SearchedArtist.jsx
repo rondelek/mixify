@@ -2,7 +2,6 @@ import React from "react";
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 

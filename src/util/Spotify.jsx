@@ -1,13 +1,7 @@
-import React from "react";
-
 const clientId = 'abaf3ada327f48d59c8cd0cd5926aef3';
 const redirectUri = 'http://localhost:3000/';
-// let accessToken;
 let accessToken = "";
-// let clientAccessToken = "";
 let expiresIn = "";
-// let user_id = "";
-// let playlistID = "";
 
 
 const Spotify = {

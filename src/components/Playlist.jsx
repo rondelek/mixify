@@ -28,7 +28,7 @@ export default function Playlist(props) {
         <div className="playlist">
             <Input  className="playlist__input"
                     name={playlistName}
-                    defaultValue="My playlist"
+                    // defaultValue="My playlist"
                     onChange={handleChangePlaylistName}
                     placeholder="My playlist" 
                     color="secondary"
@@ -36,11 +36,8 @@ export default function Playlist(props) {
                     disableUnderline/>
             <SelectedArtists    className="playlist__artists"
                                 selectedArtists={props.selectedArtists}
-                                setSelectedArtists={props.setSelectedArtists}
                                 playlistTracks={props.playlistTracks}
-                                setPlaylistTracks={props.setPlaylistTracks}
                                 playlistName={playlistName}
-                                setPlaylistName={setPlaylistName}
                                 onRemove={props.onRemove}/>
             {props.playlistTracks.length === 0 &&
                 <p className="playlist__noartist">No artists selected</p>

@@ -6,7 +6,6 @@ export default function SelectedArtists(props) {
 
     function handleDelete(artist) {
         props.onRemove(artist)
-        console.log('artist:' + ' ' + props.selectedArtists)
     }   
 
 

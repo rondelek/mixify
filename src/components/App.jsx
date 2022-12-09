@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './../css/styles';
 import SearchBar from "./SearchBar";
 import Playlist from "./Playlist";
 import SearchResults from "./SearchResults";
-import { green, blue } from '@mui/material/colors';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import krawczyk from './../assets/krawczyk.jpeg';
+import { green } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Spotify from "../util/Spotify";
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import { useContext } from "react";
+import SearchContextProvider from "../util/SearchContext";
+import { SearchContext } from "../util/SearchContext";
+
 
 
 
@@ -41,11 +44,10 @@ const theme = createTheme({
 
 export default function App() {
 
-    const [searchResults, setSearchResults] = useState([]);
-    const [selectedArtists, setSelectedArtists] = useState([]);
-    const [playlistTracks, setPlaylistTracks] = useState([]);
-    const [open, setOpen] = useState(true);
-    
+    // const [searchResults, setSearchResults] = useState([]);
+    // const [selectedArtists, setSelectedArtists] = useState([]);
+    // const [playlistTracks, setPlaylistTracks] = useState([]);
+    const [open, setOpen] = useState(true);    
 
     function addArtist(artist) {
         setSelectedArtists(oldSelectedArtists => {
@@ -93,16 +95,15 @@ export default function App() {
         <ThemeProvider theme={theme}>
             <div className="App">
                 <h1>MIXIFY</h1>
+                <SearchContextProvider>
                 <div className="create-playlist">
                     <Box className="search">
                         <ClickAwayListener onClickAway={handleClickAway}>
                             <Box>
                                 <SearchBar onSearch={searchSpotify} onClick={handleClick}/>
+
                                 {open &&
                                     <SearchResults  searchResults={searchResults}
-                                                    selectedArtists={selectedArtists}
-                                                    setSelectedArtists={setSelectedArtists}
-                                                    playlistTracks={playlistTracks}
                                                     setPlaylistTracks={setPlaylistTracks}
                                                     onGetTracks={getTracks}
                                                     onAdd={addArtist}/>
@@ -117,6 +118,7 @@ export default function App() {
                                 onAdd={addArtist}
                                 onRemove={removeArtist}/>
                 </div>
+                </SearchContextProvider>
             </div>
         </ThemeProvider>
     )

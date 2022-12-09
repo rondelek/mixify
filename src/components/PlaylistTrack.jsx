@@ -6,11 +6,21 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import ClearIcon from '@mui/icons-material/Clear';
+import { useState, useContext } from "react";
+import { SearchContext } from "../util/SearchContext";
+
 
 
 export default function PlaylistSong(props) {
 
+  const {playlistTracks, setPlaylistTracks} = useContext(SearchContext);
+
   let hasPreview = props.track.previewUrl ? true : false;
+  
+  function handleRemoveTrack(track) {
+    setPlaylistTracks(oldPlaylistTracks => oldPlaylistTracks.filter(t => props.track.id !== t.id));
+  }
 
   return (
     <>
@@ -41,6 +51,10 @@ export default function PlaylistSong(props) {
                   controls
               />
               }
+              <ClearIcon  fontSize='small'
+                          sx={{ marginLeft: '1.5rem' }}
+                          onClick={handleRemoveTrack}/>
+
       </ListItem>
       <Divider variant="inset" component="li" />
     </>

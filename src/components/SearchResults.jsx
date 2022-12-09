@@ -1,17 +1,21 @@
 import React from "react";
 import List from '@mui/material/List';
 import SearchedArtist from "./SearchedArtist";
-import UserContext from "../util/CounterContext";
 import { useContext } from "react";
+import SearchContextProvider from "../util/SearchContext";
+import { SearchContext } from "../util/SearchContext";
+
 
 export default function SearchResults(props) {
+
+  const {searchResults, addArtist, getTracks} = useContext(SearchContext);
+
 
     return (
       <List   className="searchResults" 
               sx={{ width: '100%' }}>
-          {props.searchResults.map((artist, index) => {
+          {searchResults.map((artist, index) => {
               return <SearchedArtist  key={index}
-                                      onAdd={props.onAdd}
                                       artist={artist} 
                                       onGetTracks={props.onGetTracks}/>})}    
       </List>

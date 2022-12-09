@@ -4,18 +4,24 @@ import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
+import { useContext } from "react";
+import SearchContextProvider from "../util/SearchContext";
+import { SearchContext } from "../util/SearchContext";
+
 
 
 
 export default function SearchedArtist(props) {
 
-    function addArtist() {
-        props.onAdd(props.artist);
-        getTracks();
+    const {addArtist, getTracks} = useContext(SearchContext);
+
+    function handleAddArtist() {
+        addArtist(props.artist);
+        handleGetTracks();
     }
 
-    function getTracks() {
-        props.onGetTracks(props.artist)
+    function handleGetTracks() {
+        getTracks(props.artist)
     }
 
     let avatarUrl = '';
@@ -27,7 +33,7 @@ export default function SearchedArtist(props) {
 
 
     return (
-        <ListItem onClick={addArtist}>
+        <ListItem onClick={handleAddArtist}>
             <ListItemAvatar>
                 <Avatar alt="Remy Sharp" src={avatarUrl}/>
             </ListItemAvatar>

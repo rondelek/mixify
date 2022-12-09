@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import Input from '@mui/material/Input';
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { SearchContext } from "../util/SearchContext";
 
 
 export default function SearchBar(props) {
 
+    const {searchSpotify} = useContext(SearchContext)
+
     const [searchTerm, setSearchTerm] = useState();
     
     useEffect(() => {
-        searchSpotify()
+        handleSearchSpotify()
     }, [searchTerm])
 
     function handleTermChange(e) {
@@ -16,8 +19,9 @@ export default function SearchBar(props) {
     }
     
 
-    function searchSpotify() {
-        props.onSearch(searchTerm);
+    function handleSearchSpotify() {
+        props.setOpen(true);
+        searchSpotify(searchTerm);
     }
 
     return (

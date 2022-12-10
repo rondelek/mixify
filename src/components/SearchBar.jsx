@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import Input from '@mui/material/Input';
 import { useState, useContext } from "react";
 import { SearchContext } from "../util/SearchContext";
+import { useQuery } from '@tanstack/react-query'; 
 
 
 export default function SearchBar(props) {
 
-    const {searchSpotify} = useContext(SearchContext)
+    // const {} = useQuery(["cat"], () => )
+
+    const {onSearchSpotify} = useContext(SearchContext)
 
     const [searchTerm, setSearchTerm] = useState();
     
@@ -21,12 +24,13 @@ export default function SearchBar(props) {
 
     function handleSearchSpotify() {
         props.setOpen(true);
-        searchSpotify(searchTerm);
+        onSearchSpotify(searchTerm);
     }
 
     return (
         <div>
             <Input  placeholder="Find an artist" 
+                    onClick={props.handleClick}
                     onChange={handleTermChange}
                     color="secondary"
                     fullWidth/>

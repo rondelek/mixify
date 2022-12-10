@@ -8,6 +8,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import SearchContextProvider from "../util/SearchContext";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
 
@@ -36,10 +37,19 @@ const theme = createTheme({
             },
           },
         },
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              color: 'secondary',
+            },
+          },
+        },
       },
   });
 
 export default function App() {
+
+    const client = new QueryClient();
 
     const [open, setOpen] = useState(true);    
 
@@ -52,6 +62,7 @@ export default function App() {
     }
 
     return (
+      <QueryClientProvider client={client}>
         <ThemeProvider theme={theme}>
             <div className="App">
                 <h1>MIXIFY</h1>
@@ -60,9 +71,11 @@ export default function App() {
                     <Box className="search">
                         <ClickAwayListener onClickAway={handleClickAway}>
                             <Box>
-                                <SearchBar setOpen={setOpen} onClick={handleClick}/>
+                                <SearchBar  handleClick={handleClick} 
+                                            setOpen={setOpen} 
+                                            onClick={handleClick}/>
                                 {open &&
-                                    <SearchResults />
+                                    <SearchResults setOpen={setOpen}/>
                                 }
                             </Box>
                         </ClickAwayListener>
@@ -72,5 +85,6 @@ export default function App() {
                 </SearchContextProvider>
             </div>
         </ThemeProvider>
+      </QueryClientProvider>
     )
 };

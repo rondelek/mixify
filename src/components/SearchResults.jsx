@@ -8,7 +8,7 @@ import { SearchContext } from "../util/SearchContext";
 
 export default function SearchResults(props) {
 
-  const {searchResults, addArtist, getTracks} = useContext(SearchContext);
+  const {searchResults, addArtist} = useContext(SearchContext);
 
 
     return (

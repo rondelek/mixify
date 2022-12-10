@@ -5,3 +5,4 @@ import './PlaylistTrack.scss';
 import './SelectedArtist.scss';
 import './SelectedArtists.scss';
 import './SearchResults.scss';
+import './Sort.scss';

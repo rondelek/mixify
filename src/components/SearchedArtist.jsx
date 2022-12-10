@@ -13,7 +13,7 @@ import { SearchContext } from "../util/SearchContext";
 
 export default function SearchedArtist(props) {
 
-    const {addArtist, getTracks} = useContext(SearchContext);
+    const {addArtist, onGetTracks} = useContext(SearchContext);
 
     function handleAddArtist() {
         addArtist(props.artist);
@@ -21,7 +21,7 @@ export default function SearchedArtist(props) {
     }
 
     function handleGetTracks() {
-        getTracks(props.artist)
+        onGetTracks(props.artist)
     }
 
     let avatarUrl = '';

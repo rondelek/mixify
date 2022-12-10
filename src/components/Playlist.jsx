@@ -3,9 +3,10 @@ import Input from '@mui/material/Input';
 import SelectedArtists from "./SelectedArtists";
 import PlaylistTracks from "./PlaylistTracks";
 import Button from '@mui/material/Button';
-import Spotify from "../util/Spotify";
 import { useState } from "react";
 import { SearchContext } from "../util/SearchContext";
+import { savePlaylist } from "../util/Spotify";
+import Sort from "./Sort";
 
 
 export default function Playlist(props) {
@@ -24,9 +25,9 @@ export default function Playlist(props) {
         setPlaylistName(e.target.value)
     }
 
-    function savePlaylist() {
+    function handleSavePlaylist() {
         const trackUris = playlistTracks.map(track => track.uri);
-        Spotify.savePlaylist(playlistName, trackUris).then(() => {
+        savePlaylist(playlistName, trackUris).then(() => {
             setPlaylistTracks([])
             setSelectedArtists([])
         })
@@ -49,12 +50,16 @@ export default function Playlist(props) {
             }
             {playlistTracks.length !== 0 &&
                 <>
+                    <div className="playlist__sort">
+                        <Sort />
+                    </div>
                     <div className="playlist__tracks">
                         <PlaylistTracks />
                     </div>
                     <Button variant="contained" 
                             color="secondary" 
-                            onClick={savePlaylist}>
+                            onClick={handleSavePlaylist}
+                            sx={{marginBottom: '.5rem'}}>
                                 SAVE PLAYLIST
                     </Button>
                 </>

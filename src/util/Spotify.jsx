@@ -1,5 +1,5 @@
 const clientId = 'abaf3ada327f48d59c8cd0cd5926aef3';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://mixify-121212.netlify.app/';
 let accessToken = "";
 let expiresIn = "";
 

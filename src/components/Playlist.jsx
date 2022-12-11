@@ -59,9 +59,7 @@ export default function Playlist(props) {
             }
             {playlistTracks.length !== 0 &&
                 <>            
-                    <Button onClick={clearPlaylist} color="error" size="small" sx={{fontSize: '.5rem', display: "flex", flexDirection: "row", position: "absolute", top: "11px", right: "15px"}} startIcon={<ClearAllIcon />}>
-                        Clear
-                    </Button>
+
                     <div className="playlist__sort">
                         <Sort />
                     </div>
@@ -73,6 +71,9 @@ export default function Playlist(props) {
                             onClick={handleSavePlaylist}
                             sx={{marginBottom: '.5rem'}}>
                                 SAVE PLAYLIST
+                    </Button>
+                    <Button onClick={clearPlaylist} color="error" size="small" startIcon={<ClearAllIcon />}>
+                        Clear
                     </Button>
                 </>
             }

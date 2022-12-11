@@ -14,11 +14,15 @@ import { SearchContext } from "../util/SearchContext";
 
 export default function PlaylistSong(props) {
 
-  const {playlistTracks, setPlaylistTracks} = useContext(SearchContext);
+  const {playlistTracks, setPlaylistTracks, selectedArtists, setSelectedArtists} = useContext(SearchContext);
 
   let hasPreview = props.track.previewUrl ? true : false;
   
   function handleRemoveTrack(track) {
+    const newPlaylistTracks = playlistTracks.filter(t => props.track.artist_id === t.artist_id)
+    if (newPlaylistTracks.length === 1) {
+      setSelectedArtists(oldSelectedArtists => oldSelectedArtists.filter(a => a.id !== props.track.artist_id))
+    }
     setPlaylistTracks(oldPlaylistTracks => oldPlaylistTracks.filter(t => props.track.id !== t.id));
   }
 
@@ -51,7 +55,7 @@ export default function PlaylistSong(props) {
                   controls
               />
               }
-              <ClearIcon  fontSize='small'
+              <ClearIcon  fontSize='medium'
                           sx={{ marginLeft: '1.5rem' }}
                           onClick={handleRemoveTrack}/>
 

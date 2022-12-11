@@ -8,7 +8,7 @@ import { SearchContext } from "../util/SearchContext";
 
 export default function SelectedArtists(props) {
 
-    const {selectedArtists, removeArtist} = useContext(SearchContext);
+    const {selectedArtists, removeArtist, playlistTracks} = useContext(SearchContext);
 
     function handleRemoveArtist(artist) {
         removeArtist(artist)

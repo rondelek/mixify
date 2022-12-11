@@ -7,6 +7,8 @@ import { useState } from "react";
 import { SearchContext } from "../util/SearchContext";
 import { savePlaylist } from "../util/Spotify";
 import Sort from "./Sort";
+import ClearAllIcon from '@mui/icons-material/ClearAll';
+import Typography from '@mui/material/Typography';
 
 
 export default function Playlist(props) {
@@ -31,6 +33,13 @@ export default function Playlist(props) {
             setPlaylistTracks([])
             setSelectedArtists([])
         })
+    };
+
+    function clearPlaylist() {
+        setPlaylistTracks([]);
+        setSelectedArtists([]);
+        console.log(playlistTracks)
+        console.log(selectedArtists)
     }
 
     return (
@@ -49,7 +58,10 @@ export default function Playlist(props) {
                 <p className="playlist__noartist">No artists selected</p>
             }
             {playlistTracks.length !== 0 &&
-                <>
+                <>            
+                    <Button onClick={clearPlaylist} color="error" size="small" sx={{fontSize: '.5rem', display: "flex", flexDirection: "row", position: "absolute", top: "11px", right: "15px"}} startIcon={<ClearAllIcon />}>
+                        Clear
+                    </Button>
                     <div className="playlist__sort">
                         <Sort />
                     </div>

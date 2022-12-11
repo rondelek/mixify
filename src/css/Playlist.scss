@@ -3,6 +3,7 @@
 
 .playlist {
     @include setFlex(column);
+    position: relative;
     align-self: flex-start;
     width: 45%;
     max-height: 500px;
@@ -34,12 +35,6 @@
         max-height: 400px;
         overflow: auto;
         margin: 1rem 0;
-    }
-
-    &__sort {
-        color: black;
-        font-size: .8rem;
-        margin: 1rem 1rem 0 auto;
     }
 
 }

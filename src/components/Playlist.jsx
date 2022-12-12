@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 
 export default function Playlist(props) {
 
+    const [error, setError] = useState(0);
+
     const {searchResults, 
         setSearchResults, 
         selectedArtists, 
@@ -28,6 +30,11 @@ export default function Playlist(props) {
     }
 
     function handleSavePlaylist() {
+        if (playlistName === undefined) {
+            setError(1)
+        } else {
+            setError(0)
+        }
         const trackUris = playlistTracks.map(track => track.uri);
         savePlaylist(playlistName, trackUris).then(() => {
             setPlaylistTracks([])
@@ -48,10 +55,10 @@ export default function Playlist(props) {
                     name={playlistName}
                     // defaultValue="My playlist"
                     onChange={handleChangePlaylistName}
-                    placeholder="My playlist" 
+                    placeholder="Playlist's name" 
                     color="secondary"
                     inputProps={{min: 0, style: { textAlign: 'center' , color: '#985392'}}}
-                    disableUnderline/>
+            />
             <SelectedArtists    className="playlist__artists"
                                 playlistName={playlistName}/>
             {playlistTracks.length === 0 &&
@@ -66,6 +73,9 @@ export default function Playlist(props) {
                     <div className="playlist__tracks">
                         <PlaylistTracks />
                     </div>
+                    {error === 1 &&
+                    <p className="playlist__error">Enter playlist's name</p>
+                    }
                     <Button variant="contained" 
                             color="secondary" 
                             onClick={handleSavePlaylist}

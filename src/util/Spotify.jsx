@@ -61,6 +61,7 @@ export function getTracks(artist) {
                 id: track.id,
                 title: track.name,
                 artist: track.artists[0].name,
+                artists: track.artists,
                 artist_id: track.artists[0].id,
                 uri: track.uri,
                 cover: track.album.images[0].url,

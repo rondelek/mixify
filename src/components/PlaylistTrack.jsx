@@ -17,8 +17,16 @@ export default function PlaylistSong(props) {
   const {playlistTracks, setPlaylistTracks, selectedArtists, setSelectedArtists} = useContext(SearchContext);
 
   let hasPreview = props.track.previewUrl ? true : false;
-  
+
+  let artistName = props.track.artist
+  if (props.track.artists.length > 1) {
+    const artistNames = props.track.artists.map(obj => obj.name)
+    artistName = artistNames.join(', ')
+  } 
+
+
   function handleRemoveTrack(track) {
+    // console.log(props.track.artists.map(obj => obj.id).includes('0TMvoNR0AIJV138mHY6jdE'))
     const newPlaylistTracks = playlistTracks.filter(t => props.track.artist_id === t.artist_id)
     if (newPlaylistTracks.length === 1) {
       setSelectedArtists(oldSelectedArtists => oldSelectedArtists.filter(a => a.id !== props.track.artist_id))
@@ -42,7 +50,7 @@ export default function PlaylistSong(props) {
                 variant="body2"
                 color="text.primary"
               >
-                {props.track.artist}
+                {artistName}
               </Typography>
             </>
           }
